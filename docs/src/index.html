@@ -15,12 +15,11 @@
   <header>
     <h1>Resize Observer</h1>
     <div class="gh-buttons">
-      <a class="github-button" href="https://github.com/juggle/resize-observer" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star juggle/resize-observer on GitHub">Star</a>
-      <a class="github-button" href="https://github.com/sponsors/tremaynechrist" data-icon="octicon-heart" data-size="large" aria-label="Sponsor @juggle on GitHub">Sponsor</a>
+      <a class="github-button" href="https://github.com/sambacha/resize-observer" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star sambacha/resize-observer on GitHub">Star</a>
     </div>
     <div class="subheading">
-      <p>A highly performant and true to life polyfill for observing changes to element dimensions.</p>
-      <p>If you find something is not quite right, please <a href="//github.com/juggle/resize-observer/issues/new">open
+      <p> A fork from the juggle pacakge, this is a  highly performant and true to life polyfill for observing changes to element dimensions.</p>
+      <p>If you find something is not quite right, please <a href="//github.com/sambacha/resize-observer/issues/new">open
           an issue</a>.</p>
     </div>
     <div resize=""></div>
@@ -30,19 +29,19 @@
     <p>Install the package from npm.</p>
     <pre>
     <code class="language-console">
-npm i @juggle/resize-observer
+npm i @disco3/resize-observer
     </code>
   </pre>
     <p>Once installed, you can import it like any other module.</p>
     <pre>
     <code class="language-javascript">
-import { ResizeObserver } from '@juggle/resize-observer';
+import { ResizeObserver } from '@disco3/resize-observer';
     </code>
   </pre>
     <h2>Usage</h2>
     <pre>
     <code class="language-javascript">
-import { ResizeObserver } from '@juggle/resize-observer';
+import { ResizeObserver } from '@disco3/resize-observer';
 
 const ro = new ResizeObserver((entries, observer) => {
   for (const entry of entries) {
