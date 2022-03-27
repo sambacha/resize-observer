@@ -4,3 +4,4 @@ junit.xml
 .cache
 .DS_Store
 .parcel-cache
+*.tgz
