@@ -1,6 +1,6 @@
 {
   "name": "@disco3/resize-observer",
-  "version": "4.0.0-4",
+  "version": "4.0.0",
   "description": "Polyfills the latest ResizeObserver API",
   "main": "./lib/resize-observer.js",
   "module": "./lib/resize-observer.mjs",
