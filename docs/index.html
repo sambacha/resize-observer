@@ -1,25 +1,187 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>Resize Observer Polyfill</title><link href="//fonts.googleapis.com/css?family=Heebo:300,400" rel="stylesheet"><link rel="stylesheet" href="page.9a0d4090.css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/github.min.css"></head><body> <header> <h1>Resize Observer</h1> <div class="gh-buttons"> <a class="github-button" href="https://github.com/juggle/resize-observer" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star juggle/resize-observer on GitHub">Star</a> <a class="github-button" href="https://github.com/sponsors/tremaynechrist" data-icon="octicon-heart" data-size="large" aria-label="Sponsor @juggle on GitHub">Sponsor</a> </div> <div class="subheading"> <p>A highly performant and true to life polyfill for observing changes to element dimensions.</p> <p>If you find something is not quite right, please <a href="//github.com/juggle/resize-observer/issues/new">open an issue</a>.</p> </div> <div resize=""></div> </header> <main> <h2>Installation</h2> <p>Install the package from npm.</p> <pre>
-    <code class="language-console">
-npm i @juggle/resize-observer
-    </code>
-  </pre> <p>Once installed, you can import it like any other module.</p> <pre>
-    <code class="language-javascript">
-import { ResizeObserver } from '@juggle/resize-observer';
-    </code>
-  </pre> <h2>Usage</h2> <pre>
-    <code class="language-javascript">
-import { ResizeObserver } from '@juggle/resize-observer';
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>@disco3/resize-observer</title><meta name="description" content="Documentation for @disco3/resize-observer"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">@disco3/resize-observer</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>@disco3/resize-observer</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography"><p align="center">
+  <img width="160" src="https://user-images.githubusercontent.com/1519516/68546625-51e0f680-03d0-11ea-9955-9f0e1964ba0c.png" />
+</p>
 
-const ro = new ResizeObserver((entries, observer) => {
-  for (const entry of entries) {
-    const { width, height } = entry.contentRect; // legacy
-    const [{ inlineSize, blockSize }] = entry.contentBoxSize;
-    console.log(entry.target, `${inlineSize} x ${blockSize}`);
-  }
-});
+<h1 align="center">Resize Observer</h1>
 
-ro.observe(firstElement); // observe content-box (default)
-ro.observe(secondElement, { box: 'border-box' });
-ro.observe(canvasElement, { box: 'device-pixel-content-box' });
-    </code>
-  </pre> <h2>Pseudo Classes</h2> <p>The library supports user-actioned pseudo classes, like <code>:hover</code>, <code>:active</code>, <code>:focus</code></p> <div resize="" id="pseudo-example" class="interactive-example" tabindex="0">Hover, tap or focus me.</div> <h2>Animations*</h2> <p>The library will detect changes which occur during animations.</p> <div resize="" id="animation-example" class="interactive-example">Tap me.</div> <h2>Transitions*</h2> <p>The library will detect changes which occur during transition.</p> <div resize="" id="transition-example" class="interactive-example">Tap me.</div> <p> <strong>NB:</strong> Slow-starting transitions may not be noticed, unless, other interactions occur in the application. Any missed calculations will be noticed at the end of the transition. </p> <h2>Performance Test</h2> <p>This animates 200 elements and counts the changes. To start/stop the animation, tap the cell area.</p> <p>Updates: <span id="performance-count">0</span></p> <div id="performance-example"></div> <hr> <p><strong style="float:left;margin-left:-1em">*</strong>Once the animation, or, transition has finished, the observer will sleep and wait for the next interaction. This keeps CPU idle, reducing battery consumption on portable devices.</p> </main> <script src="page.7cd22910.js"></script> <script async defer src="https://buttons.github.io/buttons.js"></script> <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js"></script> <script>hljs.initHighlightingOnLoad();</script> </body></html>
+<p align="center">
+  <img src="https://img.shields.io/circleci/project/github/juggle/resize-observer/v3.svg?logo=circleci&style=for-the-badge" />
+  <img src="https://img.shields.io/coveralls/github/juggle/resize-observer/v3.svg?logoColor=white&style=for-the-badge" />
+  <img src="https://img.shields.io/bundlephobia/minzip/@juggle/resize-observer.svg?colorB=%233399ff&style=for-the-badge" />
+  <img src="https://img.shields.io/npm/l/@juggle/resize-observer.svg?colorB=%233399ff&style=for-the-badge" />
+</p>
+
+<hr>
+<p>A minimal library which polyfills the <strong>ResizeObserver</strong> API and is entirely based on the latest <a href="https://drafts.csswg.org/resize-observer-1/">Draft Specification</a>.</p>
+<p>It immediately detects when an element resizes and provides accurate sizing information back to the handler. Check out the <a href="//juggle.studio/resize-observer">Example Playground</a> for more information on usage and performance.</p>
+<blockquote>
+<p>The latest <a href="https://drafts.csswg.org/resize-observer-1/">Resize Observer specification</a> is not yet finalised and is subject to change.
+Any drastic changes to the specification will bump the major version of this library, as there will likely be breaking changes. Check the <a href="https://github.com/juggle/resize-observer/releases">release notes</a> for more information.</p>
+</blockquote>
+
+<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+  <h2>Installation</h2>
+</a>
+<pre><code class="language-shell"><span class="hl-0">npm i @juggle/resize-observer</span>
+</code></pre>
+
+<a href="#basic-usage" id="basic-usage" style="color: inherit; text-decoration: none;">
+  <h2>Basic usage</h2>
+</a>
+<pre><code class="language-js"><span class="hl-1">import</span><span class="hl-0"> { </span><span class="hl-2">ResizeObserver</span><span class="hl-0"> } </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&#39;@juggle/resize-observer&#39;</span><span class="hl-0">;</span><br/><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">ro</span><span class="hl-0"> = </span><span class="hl-4">new</span><span class="hl-0"> </span><span class="hl-6">ResizeObserver</span><span class="hl-0">((</span><span class="hl-2">entries</span><span class="hl-0">, </span><span class="hl-2">observer</span><span class="hl-0">) </span><span class="hl-4">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-2">console</span><span class="hl-0">.</span><span class="hl-6">log</span><span class="hl-0">(</span><span class="hl-3">&#39;Body has resized!&#39;</span><span class="hl-0">);</span><br/><span class="hl-0">  </span><span class="hl-2">observer</span><span class="hl-0">.</span><span class="hl-6">disconnect</span><span class="hl-0">(); </span><span class="hl-7">// Stop observing</span><br/><span class="hl-0">});</span><br/><br/><span class="hl-2">ro</span><span class="hl-0">.</span><span class="hl-6">observe</span><span class="hl-0">(</span><span class="hl-2">document</span><span class="hl-0">.</span><span class="hl-2">body</span><span class="hl-0">); </span><span class="hl-7">// Watch dimension changes on body</span>
+</code></pre>
+<p>This will use the <a href="https://github.com/sindresorhus/ponyfill">ponyfilled</a> version of <strong>ResizeObserver</strong>, even if the browser supports <strong>ResizeObserver</strong> natively.</p>
+
+<a href="#watching-multiple-elements" id="watching-multiple-elements" style="color: inherit; text-decoration: none;">
+  <h2>Watching multiple elements</h2>
+</a>
+<pre><code class="language-js"><span class="hl-1">import</span><span class="hl-0"> { </span><span class="hl-2">ResizeObserver</span><span class="hl-0"> } </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&#39;@juggle/resize-observer&#39;</span><span class="hl-0">;</span><br/><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">ro</span><span class="hl-0"> = </span><span class="hl-4">new</span><span class="hl-0"> </span><span class="hl-6">ResizeObserver</span><span class="hl-0">((</span><span class="hl-2">entries</span><span class="hl-0">, </span><span class="hl-2">observer</span><span class="hl-0">) </span><span class="hl-4">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-2">console</span><span class="hl-0">.</span><span class="hl-6">log</span><span class="hl-0">(</span><span class="hl-3">&#39;Elements resized:&#39;</span><span class="hl-0">, </span><span class="hl-2">entries</span><span class="hl-0">.</span><span class="hl-2">length</span><span class="hl-0">);</span><br/><span class="hl-0">  </span><span class="hl-2">entries</span><span class="hl-0">.</span><span class="hl-6">forEach</span><span class="hl-0">((</span><span class="hl-2">entry</span><span class="hl-0">, </span><span class="hl-2">index</span><span class="hl-0">) </span><span class="hl-4">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">    </span><span class="hl-4">const</span><span class="hl-0"> { </span><span class="hl-2">inlineSize</span><span class="hl-0">: </span><span class="hl-5">width</span><span class="hl-0">, </span><span class="hl-2">blockSize</span><span class="hl-0">: </span><span class="hl-5">height</span><span class="hl-0"> } = </span><span class="hl-2">entry</span><span class="hl-0">.</span><span class="hl-2">contentBoxSize</span><span class="hl-0">[</span><span class="hl-8">0</span><span class="hl-0">];</span><br/><span class="hl-0">    </span><span class="hl-2">console</span><span class="hl-0">.</span><span class="hl-6">log</span><span class="hl-0">(</span><span class="hl-3">`Element </span><span class="hl-4">${</span><span class="hl-2">index</span><span class="hl-9"> </span><span class="hl-0">+</span><span class="hl-9"> </span><span class="hl-8">1</span><span class="hl-4">}</span><span class="hl-3">:`</span><span class="hl-0">, </span><span class="hl-3">`</span><span class="hl-4">${</span><span class="hl-2">width</span><span class="hl-4">}</span><span class="hl-3">x</span><span class="hl-4">${</span><span class="hl-2">height</span><span class="hl-4">}</span><span class="hl-3">`</span><span class="hl-0">);</span><br/><span class="hl-0">  });</span><br/><span class="hl-0">});</span><br/><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">els</span><span class="hl-0"> = </span><span class="hl-2">document</span><span class="hl-0">.</span><span class="hl-6">querySelectorAll</span><span class="hl-0">(</span><span class="hl-3">&#39;.resizes&#39;</span><span class="hl-0">);</span><br/><span class="hl-0">[...</span><span class="hl-2">els</span><span class="hl-0">].</span><span class="hl-6">forEach</span><span class="hl-0">(</span><span class="hl-2">el</span><span class="hl-0"> </span><span class="hl-4">=&gt;</span><span class="hl-0"> </span><span class="hl-2">ro</span><span class="hl-0">.</span><span class="hl-6">observe</span><span class="hl-0">(</span><span class="hl-2">el</span><span class="hl-0">)); </span><span class="hl-7">// Watch multiple!</span>
+</code></pre>
+
+<a href="#watching-different-box-sizes" id="watching-different-box-sizes" style="color: inherit; text-decoration: none;">
+  <h2>Watching different box sizes</h2>
+</a>
+<p>The latest standards allow for watching different box sizes. The box size option can be specified when observing an element. Options include <code>border-box</code>, <code>device-pixel-content-box</code> and <code>content-box</code> (default).</p>
+<pre><code class="language-js"><span class="hl-1">import</span><span class="hl-0"> { </span><span class="hl-2">ResizeObserver</span><span class="hl-0"> } </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&#39;@juggle/resize-observer&#39;</span><span class="hl-0">;</span><br/><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">ro</span><span class="hl-0"> = </span><span class="hl-4">new</span><span class="hl-0"> </span><span class="hl-6">ResizeObserver</span><span class="hl-0">((</span><span class="hl-2">entries</span><span class="hl-0">, </span><span class="hl-2">observer</span><span class="hl-0">) </span><span class="hl-4">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-2">console</span><span class="hl-0">.</span><span class="hl-6">log</span><span class="hl-0">(</span><span class="hl-3">&#39;Elements resized:&#39;</span><span class="hl-0">, </span><span class="hl-2">entries</span><span class="hl-0">.</span><span class="hl-2">length</span><span class="hl-0">);</span><br/><span class="hl-0">  </span><span class="hl-2">entries</span><span class="hl-0">.</span><span class="hl-6">forEach</span><span class="hl-0">((</span><span class="hl-2">entry</span><span class="hl-0">, </span><span class="hl-2">index</span><span class="hl-0">) </span><span class="hl-4">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">    </span><span class="hl-4">const</span><span class="hl-0"> [</span><span class="hl-5">size</span><span class="hl-0">] = </span><span class="hl-2">entry</span><span class="hl-0">.</span><span class="hl-2">borderBoxSize</span><span class="hl-0">;</span><br/><span class="hl-0">    </span><span class="hl-2">console</span><span class="hl-0">.</span><span class="hl-6">log</span><span class="hl-0">(</span><span class="hl-3">`Element </span><span class="hl-4">${</span><span class="hl-2">index</span><span class="hl-9"> </span><span class="hl-0">+</span><span class="hl-9"> </span><span class="hl-8">1</span><span class="hl-4">}</span><span class="hl-3">:`</span><span class="hl-0">, </span><span class="hl-3">`</span><span class="hl-4">${</span><span class="hl-2">size</span><span class="hl-9">.</span><span class="hl-2">inlineSize</span><span class="hl-4">}</span><span class="hl-3">x</span><span class="hl-4">${</span><span class="hl-2">size</span><span class="hl-9">.</span><span class="hl-2">blockSize</span><span class="hl-4">}</span><span class="hl-3">`</span><span class="hl-0">);</span><br/><span class="hl-0">  });</span><br/><span class="hl-0">});</span><br/><br/><span class="hl-7">// Watch border-box</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">observerOptions</span><span class="hl-0"> = {</span><br/><span class="hl-0">  </span><span class="hl-2">box:</span><span class="hl-0"> </span><span class="hl-3">&#39;border-box&#39;</span><br/><span class="hl-0">};</span><br/><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">els</span><span class="hl-0"> = </span><span class="hl-2">document</span><span class="hl-0">.</span><span class="hl-6">querySelectorAll</span><span class="hl-0">(</span><span class="hl-3">&#39;.resizes&#39;</span><span class="hl-0">);</span><br/><span class="hl-0">[...</span><span class="hl-2">els</span><span class="hl-0">].</span><span class="hl-6">forEach</span><span class="hl-0">(</span><span class="hl-2">el</span><span class="hl-0"> </span><span class="hl-4">=&gt;</span><span class="hl-0"> </span><span class="hl-2">ro</span><span class="hl-0">.</span><span class="hl-6">observe</span><span class="hl-0">(</span><span class="hl-2">el</span><span class="hl-0">, </span><span class="hl-2">observerOptions</span><span class="hl-0">));</span>
+</code></pre>
+<p><em>From the spec:</em></p>
+<blockquote>
+<p>The box size properties are exposed as sequences in order to support elements that have multiple fragments, which occur in <a href="https://www.w3.org/TR/css3-multicol/#">multi-column</a> scenarios. However the current definitions of content rect and border box do not mention how those boxes are affected by multi-column layout. In this spec, there will only be a single ResizeObserverSize returned in the sequences, which will correspond to the dimensions of the first column. A future version of this spec will extend the returned sequences to contain the per-fragment size information.</p>
+</blockquote>
+
+<a href="#using-the-legacy-version-contentrect" id="using-the-legacy-version-contentrect" style="color: inherit; text-decoration: none;">
+  <h2>Using the legacy version (<code>contentRect</code>)</h2>
+</a>
+<p>Early versions of the API return a <code>contentRect</code>. This is still made available for backwards compatibility.</p>
+<pre><code class="language-js"><span class="hl-1">import</span><span class="hl-0"> { </span><span class="hl-2">ResizeObserver</span><span class="hl-0"> } </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&#39;@juggle/resize-observer&#39;</span><span class="hl-0">;</span><br/><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">ro</span><span class="hl-0"> = </span><span class="hl-4">new</span><span class="hl-0"> </span><span class="hl-6">ResizeObserver</span><span class="hl-0">((</span><span class="hl-2">entries</span><span class="hl-0">, </span><span class="hl-2">observer</span><span class="hl-0">) </span><span class="hl-4">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-2">console</span><span class="hl-0">.</span><span class="hl-6">log</span><span class="hl-0">(</span><span class="hl-3">&#39;Elements resized:&#39;</span><span class="hl-0">, </span><span class="hl-2">entries</span><span class="hl-0">.</span><span class="hl-2">length</span><span class="hl-0">);</span><br/><span class="hl-0">  </span><span class="hl-2">entries</span><span class="hl-0">.</span><span class="hl-6">forEach</span><span class="hl-0">((</span><span class="hl-2">entry</span><span class="hl-0">, </span><span class="hl-2">index</span><span class="hl-0">) </span><span class="hl-4">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">    </span><span class="hl-4">const</span><span class="hl-0"> { </span><span class="hl-5">width</span><span class="hl-0">, </span><span class="hl-5">height</span><span class="hl-0"> } = </span><span class="hl-2">entry</span><span class="hl-0">.</span><span class="hl-2">contentRect</span><span class="hl-0">;</span><br/><span class="hl-0">    </span><span class="hl-2">console</span><span class="hl-0">.</span><span class="hl-6">log</span><span class="hl-0">(</span><span class="hl-3">`Element </span><span class="hl-4">${</span><span class="hl-2">index</span><span class="hl-9"> </span><span class="hl-0">+</span><span class="hl-9"> </span><span class="hl-8">1</span><span class="hl-4">}</span><span class="hl-3">:`</span><span class="hl-0">, </span><span class="hl-3">`</span><span class="hl-4">${</span><span class="hl-2">width</span><span class="hl-4">}</span><span class="hl-3">x</span><span class="hl-4">${</span><span class="hl-2">height</span><span class="hl-4">}</span><span class="hl-3">`</span><span class="hl-0">);</span><br/><span class="hl-0">  });</span><br/><span class="hl-0">});</span><br/><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">els</span><span class="hl-0"> = </span><span class="hl-2">document</span><span class="hl-0">.</span><span class="hl-6">querySelectorAll</span><span class="hl-0">(</span><span class="hl-3">&#39;.resizes&#39;</span><span class="hl-0">);</span><br/><span class="hl-0">[...</span><span class="hl-2">els</span><span class="hl-0">].</span><span class="hl-6">forEach</span><span class="hl-0">(</span><span class="hl-2">el</span><span class="hl-0"> </span><span class="hl-4">=&gt;</span><span class="hl-0"> </span><span class="hl-2">ro</span><span class="hl-0">.</span><span class="hl-6">observe</span><span class="hl-0">(</span><span class="hl-2">el</span><span class="hl-0">));</span>
+</code></pre>
+
+<a href="#switching-between-native-and-polyfilled-versions" id="switching-between-native-and-polyfilled-versions" style="color: inherit; text-decoration: none;">
+  <h2>Switching between native and polyfilled versions</h2>
+</a>
+<p>You can check to see if the native version is available and switch between this and the polyfill to improve performance on browsers with native support.</p>
+<pre><code class="language-js"><span class="hl-1">import</span><span class="hl-0"> { </span><span class="hl-2">ResizeObserver</span><span class="hl-0"> </span><span class="hl-1">as</span><span class="hl-0"> </span><span class="hl-2">Polyfill</span><span class="hl-0"> } </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&#39;@juggle/resize-observer&#39;</span><span class="hl-0">;</span><br/><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">ResizeObserver</span><span class="hl-0"> = </span><span class="hl-2">window</span><span class="hl-0">.</span><span class="hl-2">ResizeObserver</span><span class="hl-0"> || </span><span class="hl-2">Polyfill</span><span class="hl-0">;</span><br/><br/><span class="hl-7">// Uses native or polyfill, depending on browser support.</span><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">ro</span><span class="hl-0"> = </span><span class="hl-4">new</span><span class="hl-0"> </span><span class="hl-6">ResizeObserver</span><span class="hl-0">((</span><span class="hl-2">entries</span><span class="hl-0">, </span><span class="hl-2">observer</span><span class="hl-0">) </span><span class="hl-4">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-2">console</span><span class="hl-0">.</span><span class="hl-6">log</span><span class="hl-0">(</span><span class="hl-3">&#39;Something has resized!&#39;</span><span class="hl-0">);</span><br/><span class="hl-0">});</span>
+</code></pre>
+<p>To improve this even more, you could use dynamic imports to only load the file when the polyfill is required.</p>
+<pre><code class="language-js"><span class="hl-0">(</span><span class="hl-4">async</span><span class="hl-0"> () </span><span class="hl-4">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-1">if</span><span class="hl-0"> (</span><span class="hl-3">&#39;ResizeObserver&#39;</span><span class="hl-0"> </span><span class="hl-4">in</span><span class="hl-0"> </span><span class="hl-2">window</span><span class="hl-0"> === </span><span class="hl-4">false</span><span class="hl-0">) {</span><br/><span class="hl-0">    </span><span class="hl-7">// Loads polyfill asynchronously, only if required.</span><br/><span class="hl-0">    </span><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">module</span><span class="hl-0"> = </span><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-4">import</span><span class="hl-0">(</span><span class="hl-3">&#39;@juggle/resize-observer&#39;</span><span class="hl-0">);</span><br/><span class="hl-0">    </span><span class="hl-2">window</span><span class="hl-0">.</span><span class="hl-2">ResizeObserver</span><span class="hl-0"> = </span><span class="hl-10">module</span><span class="hl-0">.</span><span class="hl-2">ResizeObserver</span><span class="hl-0">;</span><br/><span class="hl-0">  }</span><br/><span class="hl-0">  </span><span class="hl-7">// Uses native or polyfill, depending on browser support.</span><br/><span class="hl-0">  </span><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">ro</span><span class="hl-0"> = </span><span class="hl-4">new</span><span class="hl-0"> </span><span class="hl-6">ResizeObserver</span><span class="hl-0">((</span><span class="hl-2">entries</span><span class="hl-0">, </span><span class="hl-2">observer</span><span class="hl-0">) </span><span class="hl-4">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">    </span><span class="hl-2">console</span><span class="hl-0">.</span><span class="hl-6">log</span><span class="hl-0">(</span><span class="hl-3">&#39;Something has resized!&#39;</span><span class="hl-0">);</span><br/><span class="hl-0">  });</span><br/><span class="hl-0">})();</span>
+</code></pre>
+<blockquote>
+<p>Browsers with native support may be behind on the latest specification.
+Use <code>entry.contentRect</code> when switching between native and polyfilled versions.</p>
+</blockquote>
+
+<a href="#resize-loop-detection" id="resize-loop-detection" style="color: inherit; text-decoration: none;">
+  <h2>Resize loop detection</h2>
+</a>
+<p>Resize Observers have inbuilt protection against infinite resize loops.</p>
+<p>If an element&#39;s observed box size changes again within the same resize loop, the observation will be skipped and an error event will be dispatched on the window. Elements with undelivered notifications will be considered for delivery in the next loop.</p>
+<pre><code class="language-js"><span class="hl-1">import</span><span class="hl-0"> { </span><span class="hl-2">ResizeObserver</span><span class="hl-0"> } </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&#39;@juggle/resize-observer&#39;</span><span class="hl-0">;</span><br/><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">ro</span><span class="hl-0"> = </span><span class="hl-4">new</span><span class="hl-0"> </span><span class="hl-6">ResizeObserver</span><span class="hl-0">((</span><span class="hl-2">entries</span><span class="hl-0">, </span><span class="hl-2">observer</span><span class="hl-0">) </span><span class="hl-4">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-7">// Changing the body size inside of the observer</span><br/><span class="hl-0">  </span><span class="hl-7">// will cause a resize loop and the next observation will be skipped</span><br/><span class="hl-0">  </span><span class="hl-2">document</span><span class="hl-0">.</span><span class="hl-2">body</span><span class="hl-0">.</span><span class="hl-2">style</span><span class="hl-0">.</span><span class="hl-2">width</span><span class="hl-0"> = </span><span class="hl-3">&#39;50%&#39;</span><span class="hl-0">;</span><br/><span class="hl-0">});</span><br/><br/><span class="hl-7">// Listen for errors</span><br/><span class="hl-2">window</span><span class="hl-0">.</span><span class="hl-6">addEventListener</span><span class="hl-0">(</span><span class="hl-3">&#39;error&#39;</span><span class="hl-0">, </span><span class="hl-2">e</span><span class="hl-0"> </span><span class="hl-4">=&gt;</span><span class="hl-0"> </span><span class="hl-2">console</span><span class="hl-0">.</span><span class="hl-6">log</span><span class="hl-0">(</span><span class="hl-2">e</span><span class="hl-0">.</span><span class="hl-2">message</span><span class="hl-0">));</span><br/><br/><span class="hl-7">// Observe the body</span><br/><span class="hl-2">ro</span><span class="hl-0">.</span><span class="hl-6">observe</span><span class="hl-0">(</span><span class="hl-2">document</span><span class="hl-0">.</span><span class="hl-2">body</span><span class="hl-0">);</span>
+</code></pre>
+
+<a href="#notification-schedule" id="notification-schedule" style="color: inherit; text-decoration: none;">
+  <h2>Notification Schedule</h2>
+</a>
+<p>Notifications are scheduled after all other changes have occurred and all other animation callbacks have been called. This allows the observer callback to get the most accurate size of an element, as no other changes should occur in the same frame.</p>
+<p><img src="https://user-images.githubusercontent.com/1519516/52825568-20433500-30b5-11e9-9854-4cee13a09a7d.jpg" alt="resize observer notification schedule"></p>
+
+<a href="#how-are-differences-detected" id="how-are-differences-detected" style="color: inherit; text-decoration: none;">
+  <h2>How are differences detected?</h2>
+</a>
+<p>To prevent constant polling, every frame. The DOM is queried whenever an event occurs which could cause an element to change its size. This could be when an element is clicked, a DOM Node is added, or, when an animation is running.</p>
+<p>To cover these scenarios, there are two types of observation. The first is to listen to specific DOM events, including <code>resize</code>, <code>mousedown</code> and <code>focus</code> to name a few. The second is to listen for any DOM mutations that occur. This detects when a DOM node is added or removed, an attribute is modified, or, even when some text has changed.</p>
+<p>This allows for greater idle time, when the application itself is idle.</p>
+
+<a href="#features" id="features" style="color: inherit; text-decoration: none;">
+  <h2>Features</h2>
+</a>
+<ul>
+<li>Inbuilt resize loop protection.</li>
+<li>Supports observing different box sizes.</li>
+<li>Supports pseudo classes <code>:hover</code>, <code>:active</code> and <code>:focus</code>.</li>
+<li>Supports transitions and animations, including infinite and long-running.</li>
+<li>Polls only when required, then shuts down automatically, reducing CPU usage.</li>
+<li>Zero delay system - Notifications are batched and delivered immediately, before the next paint.</li>
+</ul>
+
+<a href="#detects" id="detects" style="color: inherit; text-decoration: none;">
+  <h2>Detects</h2>
+</a>
+<ul>
+<li>Any changes made via user-interaction e.g. clicking/tapping, typing, focusing, hovering etc.</li>
+<li>Any changes made via DOM modification e.g. adding/removing attributes/elements/text.</li>
+<li>Any changes made via animations/transitions</li>
+<li>Any changes made via window resizing</li>
+<li>Any changes made inside shadow roots</li>
+<li>Any changes made inside iframes</li>
+<li>Any changes made inside other windows/documents</li>
+</ul>
+
+<a href="#limitations" id="limitations" style="color: inherit; text-decoration: none;">
+  <h2>Limitations</h2>
+</a>
+<ul>
+<li>Transitions with initial delays cannot be detected.*</li>
+<li>Animations and transitions with long periods of no change (&gt; 250ms), will not be detected.*</li>
+<li>Style changes which occur for print cannot be detected (<a href="https://github.com/juggle/resize-observer/issues/46">More info</a>).</li>
+<li>Style changes from in-memory stylesheets cannot be detected. This includes modifications via the CSSOM and adopting stylesheets.</li>
+</ul>
+
+<a href="#tested-browsers" id="tested-browsers" style="color: inherit; text-decoration: none;">
+  <h2>Tested Browsers</h2>
+</a>
+
+<a href="#desktop" id="desktop" style="color: inherit; text-decoration: none;">
+  <h3>Desktop</h3>
+</a>
+<table>
+<thead>
+<tr>
+<th><img src="https://github.com/alrra/browser-logos/raw/master/src/chrome/chrome_64x64.png" alt="chrome"></th>
+<th><img src="https://github.com/alrra/browser-logos/raw/master/src/safari/safari_64x64.png" alt="safari"></th>
+<th><img src="https://github.com/alrra/browser-logos/raw/master/src/firefox/firefox_64x64.png" alt="ff"></th>
+<th><img src="https://github.com/alrra/browser-logos/raw/master/src/opera/opera_64x64.png" alt="opera"></th>
+<th><img src="https://github.com/alrra/browser-logos/raw/master/src/edge/edge_64x64.png" alt="edge"></th>
+<th><img src="https://github.com/alrra/browser-logos/raw/master/src/archive/edge_12-18/edge_12-18_64x64.png" alt="edge"></th>
+<th><img src="https://github.com/alrra/browser-logos/raw/master/src/archive/internet-explorer_9-11/internet-explorer_9-11_64x64.png" alt="IE"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chrome</td>
+<td>Safari</td>
+<td>Firefox</td>
+<td>Opera</td>
+<td>Edge</td>
+<td>Edge 12-18</td>
+<td>IE11<br/>IE 9-10 (with polyfills)**</td>
+</tr>
+</tbody></table>
+
+<a href="#mobile" id="mobile" style="color: inherit; text-decoration: none;">
+  <h3>Mobile</h3>
+</a>
+<table>
+<thead>
+<tr>
+<th><img src="https://github.com/alrra/browser-logos/raw/master/src/chrome/chrome_64x64.png" alt="chrome"></th>
+<th><img src="https://github.com/alrra/browser-logos/raw/master/src/safari/safari_64x64.png" alt="safari"></th>
+<th><img src="https://github.com/alrra/browser-logos/raw/master/src/firefox/firefox_64x64.png" alt="ff"></th>
+<th><img src="https://github.com/alrra/browser-logos/raw/master/src/opera/opera_64x64.png" alt="opera"></th>
+<th><img src="https://github.com/alrra/browser-logos/raw/master/src/opera-mini/opera-mini_64x64.png" alt="opera mini"></th>
+<th><img src="https://github.com/alrra/browser-logos/raw/master/src/archive/edge_12-18/edge_12-18_64x64.png" alt="edge"></th>
+<th><img src="https://github.com/alrra/browser-logos/raw/master/src/samsung-internet/samsung-internet_64x64.png" alt="samsung internet"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chrome</td>
+<td>Safari</td>
+<td>Firefox</td>
+<td>Opera</td>
+<td>Opera Mini</td>
+<td>Edge</td>
+<td>Samsung Internet</td>
+</tr>
+</tbody></table>
+<hr>
+<p>*If other interaction occurs, changes will be detected.</p>
+<p>**IE10 requires additional polyfills for <code>WeakMap</code>, <code>MutationObserver</code> and <code>devicePixelRatio</code>. IE9 requires IE10 polyfills plus <code>requestAnimationFrame</code>. For more information, <a href="https://github.com/juggle/resize-observer/issues/64">see issue here</a>.</p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-class"><a href="classes/ResizeObserver.html" class="tsd-kind-icon">Resize<wbr/>Observer</a></li><li class="tsd-kind-class"><a href="classes/ResizeObserverEntry.html" class="tsd-kind-icon">Resize<wbr/>Observer<wbr/>Entry</a></li><li class="tsd-kind-class"><a href="classes/ResizeObserverSize.html" class="tsd-kind-icon">Resize<wbr/>Observer<wbr/>Size</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li><li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li><li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
