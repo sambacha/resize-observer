@@ -1,5 +1,6 @@
 // Tests if target is an SVGGraphicsElement
-const isSVG = (target: Element): boolean => target instanceof SVGElement && 'getBBox' in target;
+const isSVG = (target: Element | SVGGraphicsElement): target is SVGGraphicsElement =>
+  target instanceof SVGElement && 'getBBox' in target;
 
 // Checks to see if element is hidden (has no display)
 const isHidden = (target: Element): boolean => {
@@ -12,7 +13,7 @@ const isHidden = (target: Element): boolean => {
 }
 
 // Checks if an object is an Element
-const isElement = (obj: unknown): boolean => {
+const isElement = (obj: unknown): obj is Element => {
   if (obj instanceof Element) {
     return true;
   }
@@ -38,9 +39,15 @@ const isReplacedElement = (target: Element): boolean => {
   return false;
 }
 
+const isDocument = (node: Node | Document | DocumentFragment): node is Document | DocumentFragment => {
+  const t =  node && node.nodeType;
+  return t === 9 || t === 11;
+}
+
 export {
   isSVG,
   isHidden,
   isElement,
+  isDocument,
   isReplacedElement
 };

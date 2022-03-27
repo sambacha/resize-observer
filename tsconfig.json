@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "es2015",
+    "target": "es2020",
+    "module": "es2020",
     "outDir": "./lib",
     "rootDir": "./src",
     "declaration": true,
-    "removeComments": true,
+    "declarationDir": "./lib/types",
+    "emitDeclarationOnly": true,
     "strict": true,
     "alwaysStrict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "lib": ["dom", "es2015"]
+    "lib": ["dom", "es2020"]
   },
   "files": [
     "./src/exports/resize-observer.ts"

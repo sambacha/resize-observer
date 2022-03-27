@@ -1,5 +1,7 @@
 node_modules
 coverage
-lib
 junit.xml
 .cache
+.DS_Store
+.parcel-cache
+*.tgz

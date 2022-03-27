@@ -1,12 +1,17 @@
 {
-  "name": "@juggle/resize-observer",
-  "version": "3.3.1",
-  "description": "Polyfills the ResizeObserver API and supports box size options from the latest spec",
-  "main": "lib/exports/resize-observer.umd.js",
-  "module": "lib/exports/resize-observer.js",
-  "types": "lib/exports/resize-observer.d.ts",
+  "name": "@disco3/resize-observer",
+  "version": "4.0.0",
+  "description": "Polyfills the latest ResizeObserver API",
+  "main": "./lib/resize-observer.js",
+  "module": "./lib/resize-observer.mjs",
+  "types": "./lib/types/exports/resize-observer.d.ts",
+  "exports": {
+    "require": "./lib/resize-observer.js",
+    "import": "./lib/resize-observer.mjs",
+    "default": "./lib/resize-observer.js"
+  },
   "files": [
-    "lib/**/*.{js,ts}"
+    "lib/**/*.{mjs,js,ts}"
   ],
   "scripts": {
     "build": "rm -rf lib && npm run build:esm && npm run build:umd",
@@ -18,10 +23,6 @@
     "lint": "eslint '{src,test}/**/*.ts'",
     "preVersion": "npm run build-docs",
     "prepublishOnly": "npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/juggle/resize-observer.git"
   },
   "keywords": [
     "ResizeObserver",
@@ -45,25 +46,40 @@
   ],
   "author": "Juggle",
   "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/juggle/resize-observer/issues"
+  "browerslist": {
+    "production": [
+      ">0.3%",
+      "not dead",
+      "not op_mini all",
+      "not IE > 0",
+      "not samsung 4",
+      "not and_uc 12.12"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 edge version"
+    ]
   },
-  "homepage": "https://juggle.studio/resize-observer/",
   "devDependencies": {
-    "@types/jest": "^26.0.20",
-    "@typescript-eslint/eslint-plugin": "^4.15.2",
-    "@typescript-eslint/parser": "^4.15.2",
-    "core-js": "^3.9.0",
+    "@parcel/config-default": "^2.4.0",
+    "@parcel/transformer-typescript-tsc": "^2.4.0",
+    "@rollup/plugin-typescript": "^8.3.1",
+    "@types/jest": "^27.4.1",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "core-js": "^3.21.1",
     "coveralls": "^3.1.0",
-    "cssnano": "^4.1.10",
-    "eslint": "^7.20.0",
-    "jest": "^26.6.3",
-    "jest-cli": "^26.6.3",
-    "jest-junit": "^12.0.0",
-    "jsdom": "^16.4.0",
-    "parcel-bundler": "^1.12.4",
-    "rollup": "^2.39.1",
-    "ts-jest": "^26.5.2",
-    "typescript": "^3.9.9"
+    "cssnano": "^5.1.5",
+    "eslint": "^8",
+    "jest": "^27.5.1",
+    "jest-cli": "^27.5.1",
+    "jest-junit": "^13.0.0",
+    "jsdom": "^19.0.0",
+    "parcel": "^2.4.0",
+    "rollup": "^2.70.1",
+    "ts-jest": "^27.1.4",
+    "typedoc": "^0.22.13",
+    "typescript": "^4.6.3"
   }
 }
